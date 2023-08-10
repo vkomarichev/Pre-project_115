@@ -4,6 +4,7 @@ import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
 
+
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
@@ -13,6 +14,8 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             session.createSQLQuery(qwery).executeUpdate();
             session.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -39,6 +42,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.getTransaction().commit();
         } catch (Exception e) {
             System.out.println("Таблица уже существует");
+            e.printStackTrace();
         }
     }
 
@@ -51,6 +55,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.getTransaction().commit();
         }catch (Exception e){
             System.out.println("Не получилось удалить таблицу");
+            e.printStackTrace();
         }
     }
 
@@ -61,6 +66,8 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             session.persist(user);
             session.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -71,6 +78,8 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             session.createQuery(qwery).executeUpdate();
             session.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -81,6 +90,8 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             userList = session.createQuery("from User").getResultList();
             session.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
         }
         userList.stream().forEach(System.out::println);
         return userList;
@@ -93,6 +104,8 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             session.createQuery(qwery).executeUpdate();
             session.getTransaction().commit();
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
     }
